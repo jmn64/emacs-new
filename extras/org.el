@@ -44,7 +44,10 @@
 (setq org-directory "~/Documents/org/") ; Non-absolute paths for agenda and
                                         ; capture templates will look here.
 
-(setq org-agenda-files '("inbox.org" "work.org" "home.org" "reference.org"))
+(setq org-agenda-files (list "~/Documents/org/inbox.org"
+			     "~/Documents/org/work.org"
+			     "~/Documents/org/home.org"
+			     "~/Documents/org/reference.org"))
 
 ;; Default tags
 (setq org-tag-alist '(
@@ -61,6 +64,7 @@
                       ("mail")
                       ("web")
                       ("errand")
+		      ("computer")
                       (:endgroup)
                       (:newline)
                       ))
@@ -87,6 +91,9 @@
 ;;;   Phase 1: editing and exporting files
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Indent org headings
+(setq org-startup-indented t)
 
 (use-package org
   :hook ((org-mode . visual-line-mode)  ; wrap lines at word breaks
@@ -132,40 +139,19 @@
   (setq org-capture-templates
         '(
           ("t" "Todo (Inbox)" entry
-           (file "~/org/inbox.org")
+           (file "inbox.org")
            "* TODO %?\n %i%l")
 
           ("n" "Note (Inbox)" entry
-           (file "~/org/inbox.org")
+           (file "inbox.org")
            "* %?\n %i%l")
 
           ("j" "Journal Entry" entry
-           (file+datetree "~/org/journal.org")
-           "* %H:%M %? \n %i%l")
+           (file+datetree "journal.org")
+	   "* %(format-time-string \"%H:%M\") %? \n %i%l")
           )
-        )
-  (setq org-capture-templates
-        '(("c" "Default Capture" entry (file "inbox.org")
-           "* TODO %?\n%U\n%i")
-          ;; Capture and keep an org-link to the thing we're currently working with
-          ("r" "Capture with Reference" entry (file "inbox.org")
-           "* TODO %?\n%U\n%i\n%a")
-          ;; Define a section
-          ("w" "Work")
-          ("wm" "Work meeting" entry (file+headline "work.org" "Meetings")
-           "** TODO %?\n%U\n%i\n%a")
-          ("wr" "Work report" entry (file+headline "work.org" "Reports")
-           "** TODO %?\n%U\n%i\n%a")))
-
-  ;; An agenda view lets you see your TODO items filtered and
-  ;; formatted in different ways. You can have multiple agenda views;
-  ;; please see the org-mode documentation for more information.
-  (setq org-agenda-custom-commands
-        '(("n" "Agenda and All Todos"
-           ((agenda)
-            (todo)))
-          ("w" "Work" agenda ""
-           ((org-agenda-files '("work.org")))))))
+	)
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -174,3 +160,35 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; TODO
+
+;; Makefolding work without changing to insert mode
+(use-package evil-org
+  :ensure t
+  :after org
+  :hook (org-mode . evil-org-mode)
+  :config
+  (evil-org-set-key-theme '(textobjects insert navigation)))
+
+;; Org Super Agenda
+(use-package org-super-agenda
+  :ensure t
+  :config
+  (org-super-agenda-mode)
+  (setq org-agenda-custom-commands
+	'(("c" "My Dashboard"
+	   ((agenda "" ((org-agenda-span 'day) ; Today's tasks
+			(org-super-agenda-groups
+			 '(;; Group 1: Overdue deadlines
+			   (:name "Overdue"
+				  :deadline 'past)
+			   ;; Group 2: Tasks Scheduled Today
+			   (:name "Today"
+				  :time-grid t
+				  :scheduled 'today
+				  :deadline 'today)
+			   ;; Group 3: Tasks tagged as "NEXT"
+			   (:name "Up Next"
+				  :todo "NEXT")
+			   ;; Group 4: Tasks waiting
+			   (:name "Waiting"
+				  :todo "WAITING"))))))))))

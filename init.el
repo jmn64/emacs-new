@@ -32,6 +32,9 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Set my name
+(setq user-full-name "Joshua Mead")
+
 ;; Package initialization
 ;;
 ;; We'll stick to the built-in GNU and non-GNU ELPAs (Emacs Lisp Package
@@ -102,7 +105,7 @@ If the new path's directories does not exist, create them."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Show the help buffer after startup
-(add-hook 'after-init-hook 'help-quick)
+;;(add-hook 'after-init-hook 'help-quick)
 
 ;; which-key: shows a popup of available keybindings when typing a long key
 ;; sequence (e.g. C-x ...)
@@ -212,7 +215,7 @@ If the new path's directories does not exist, create them."
 
 (use-package emacs
   :config
-  (load-theme 'modus-vivendi))          ; for light theme, use modus-operandi
+  (load-theme 'my-dark-theme t))          ; for light theme, use modus-operandi
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -232,6 +235,12 @@ If the new path's directories does not exist, create them."
 
 ;; Vim-bindings in Emacs (evil-mode configuration)
 (load-file (expand-file-name "extras/vim-like.el" user-emacs-directory))
+
+;; Custom dashboard
+(load-file (expand-file-name "extras/dashboard.el" user-emacs-directory))
+
+;; Rainbow delimiters
+(load-file (expand-file-name "extras/rainbow.el" user-emacs-directory))
 
 ;; Org-mode configuration
 ;; WARNING: need to customize things inside the elisp file before use! See
@@ -258,10 +267,7 @@ If the new path's directories does not exist, create them."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(avy cape corfu-terminal eat embark-consult evil json-mode kind-icon
-	 magit marginalia markdown-mode orderless tempel vertico wgrep
-	 yaml-mode)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
