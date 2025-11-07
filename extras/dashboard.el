@@ -32,11 +32,21 @@
 	
 	;; Super agenda dashboard
 	(insert "\n--- Agenda Views ---\n")
-	(insert-button " Open 'My Dashboard' Agenda\n"
-		       'action (lambda (btn) (org-agenda nil "c"))
+	(insert-button " Open Work Dashboard\n"
+		       'action (lambda (btn) (org-agenda nil "w"))
 		       'follow-link t
-		       'help-echo "Open custom org-super-agenda view")
-	
+		       'help-echo "Open work org-super-agenda view")
+
+	(insert-button " Open Home Dashboard\n"
+		       'action (lambda (btn) (org-agenda nil "h"))
+		       'follow-link t
+		       'help-echo "Open home org-super-agenda view")
+
+	(insert-button " Open Review Dashboard\n"
+		       'action (lambda (btn) (org-agenda nil "r"))
+		       'follow-link t
+		       'help-echo "Open review org-super-agenda view")
+
 	(insert "\n --- Other Actions ---\n")
 	(insert-button " Find File (C-x C-f)\n"
 		       'action (lambda (btn) (call-interactively 'find-file)))
