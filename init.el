@@ -35,6 +35,9 @@
 ;; Set my name
 (setq user-full-name "Joshua Mead")
 
+;; Auto convert line endings when pasted
+(setq-default inhibit-eol-conversion t)
+
 ;; Package initialization
 ;;
 ;; We'll stick to the built-in GNU and non-GNU ELPAs (Emacs Lisp Package
@@ -241,6 +244,9 @@ If the new path's directories does not exist, create them."
 
 ;; Rainbow delimiters
 (load-file (expand-file-name "extras/rainbow.el" user-emacs-directory))
+
+;; WSL clipboard behavior
+(load-file (expand-file-name "extras/clipboard.el" user-emacs-directory))
 
 ;; Org-mode configuration
 ;; WARNING: need to customize things inside the elisp file before use! See

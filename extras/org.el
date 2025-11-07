@@ -161,7 +161,7 @@
 
 	  ("c" "Clipboard (inbox)" entry
 	   (file "inbox.org")
-	   "* TODO %?\n\n%x")
+	   "* TODO %?\n\n%(shell-command-to-string (format \"%s | tr -d '\\r'\" xclip-paste-program))")
           )
 	)
   )
