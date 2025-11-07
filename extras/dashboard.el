@@ -47,6 +47,14 @@
 		       'follow-link t
 		       'help-echo "Open review org-super-agenda view")
 
+	;; Config Files
+	(insert "\n--- Configuration ---\n")
+	(let* ((extras-dir (expand-file-name "extras" user-emacs-directory)))
+	  (insert-button " [Open Extras Config Folder]\n"
+			 'action (lambda (btn) (dired extras-dir))
+			 'follow-link t
+			 'help-echo (format "Open %s in Dired" extras-dir)))
+	
 	(insert "\n --- Other Actions ---\n")
 	(insert-button " Find File (C-x C-f)\n"
 		       'action (lambda (btn) (call-interactively 'find-file)))
