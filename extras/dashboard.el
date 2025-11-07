@@ -19,7 +19,7 @@
 	    (let ((git-status (shell-command-to-string
 			       (format "git -C %s status --porcelain"
 				       (shell-quote-argument config-dir)))))
-	      (if (string-equal git-status "")
+	      (if (string-blank-p git-status)
 		  ;; Clean
 		  (insert (propertize " Config is current\n"
 				      'face '(:foreground "green")))
