@@ -16,9 +16,15 @@
 	      (insert (propertize " .emacs.d is not a git repository\n"
 				  'face '(:foreground "orange")))
 	    ;; Config is a git repo, check status
-	    (let ((git-status (shell-command-to-string
+	    (let* (
+		  (expanded-dir (expand-file-name config-dir))
+		  (git-status (shell-command-to-string
 			       (format "git -C %s status --porcelain"
-				       (shell-quote-argument config-dir)))))
+				       (shell-quote-argument expanded-dir)))))
+
+	      ;; DEBUG
+	      (insert (format "DEBUG: git-status is: %S\n" git-status))
+
 	      (if (string-blank-p git-status)
 		  ;; Clean
 		  (insert (propertize " Config is current\n"
