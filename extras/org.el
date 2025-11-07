@@ -67,6 +67,13 @@
 		      ("computer")
                       (:endgroup)
                       (:newline)
+		      ;; classification
+		      (:startgroup)
+		      ("project")
+		      ("meeting")
+		      ("someday")
+		      (:endgroup)
+		      (:newline)
                       ))
 
 ;; Org-refile: where should org-refile look?
@@ -100,6 +107,8 @@
          (org-mode . flyspell-mode))    ; spell checking!
 
   :bind (:map global-map
+	      ("C-c c" . org-capture)               ; capture
+	      ("C-c a" . org-agenda)                ; agenda
               ("C-c l s" . org-store-link)          ; Mnemonic: link → store
               ("C-c l i" . org-insert-link-global)) ; Mnemonic: link → insert
   :config
@@ -140,15 +149,19 @@
         '(
           ("t" "Todo (Inbox)" entry
            (file "inbox.org")
-           "* TODO %?\n %i%l")
+           "* TODO %?\n")
 
           ("n" "Note (Inbox)" entry
            (file "inbox.org")
-           "* %?\n %i%l")
+           "* %?\n")
 
           ("j" "Journal Entry" entry
            (file+datetree "journal.org")
-	   "* %(format-time-string \"%H:%M\") %? \n %i%l")
+	   "* %(format-time-string \"%H:%M\") %? \n")
+
+	  ("c" "Clipboard (inbox)" entry
+	   (file "inbox.org")
+	   "* TODO %?\n\n%x")
           )
 	)
   )
@@ -160,6 +173,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; TODO
+
+;; Org Habit Tracking
+(add-to-list 'org-modules 'org-habit t)
 
 ;; Makefolding work without changing to insert mode
 (use-package evil-org
@@ -175,20 +191,76 @@
   :config
   (org-super-agenda-mode)
   (setq org-agenda-custom-commands
-	'(("c" "My Dashboard"
-	   ((agenda "" ((org-agenda-span 'day) ; Today's tasks
+	'(
+	  ;; Review Dashboard Attempt
+	  ("r" "Review Dashboard"
+	   ((tags-todo "-DONE"
+		       ((org-agenda-overriding-header "Review Dashboard\n")
+			(org-agenda-span 'day)
 			(org-super-agenda-groups
-			 '(;; Group 1: Overdue deadlines
-			   (:name "Overdue"
-				  :deadline 'past)
-			   ;; Group 2: Tasks Scheduled Today
-			   (:name "Today"
-				  :time-grid t
-				  :scheduled 'today
-				  :deadline 'today)
-			   ;; Group 3: Tasks tagged as "NEXT"
-			   (:name "Up Next"
-				  :todo "NEXT")
-			   ;; Group 4: Tasks waiting
-			   (:name "Waiting"
-				  :todo "WAITING"))))))))))
+			 '(;; Group 1: Process Inbox
+			   (:name "1. Process Inbox"
+				  :file-path "inbox.org")
+			   ;; Group 2: Review Active Projects
+			   (:name "2. Review Active Projects"
+				  :tag "project")
+			   (:name "3. Review Someday/Maybe Items"
+				  :tag "someday")))))))
+
+    	  ;; Work Dashboard
+    	  ("w" "Work Dashboard"
+    	   ((agenda "" ((org-agenda-span 'day)
+    			(org-agenda-files '("~/Documents/org/work.org"))
+    			(org-super-agenda-groups
+    			 '(;; Group 1: Overdue deadlines
+    			   (:name "Overdue"
+    				  :deadline 'past)
+    			   ;; Group 2: Task Scheduled Today
+    			   (:name "Today"
+    				  :time-grid t
+    				  :scheduled 'today
+    				  :deadline 'today)
+    			   ;; Group 3: Tasks tagged as "NEXT"
+    			   (:name "Up Next"
+    				  :todo "NEXT")
+    			   ;; Group 4: Tasks waiting
+    			   (:name "Waiting"
+    				  :todo "WAITING")))))))
+
+    	  ;; Home Dashboard
+    	  ("h" "Home Dashboard"
+    	   ((agenda "" ((org-agenda-span 'day)
+    			(org-agenda-files '("~/Documents/org/home.org"))
+    			(org-super-agenda-groups
+    			 '(;; Group 1: Overdue deadlines
+    			   (:name "Overdue"
+    				  :deadline 'past)
+    			   ;; Group 2: Task Scheduled Today
+    			   (:name "Today"
+    				  :time-grid t
+    				  :scheduled 'today
+    				  :deadline 'today)
+    			   ;; Group 3: Tasks tagged as "NEXT"
+    			   (:name "Up Next"
+    				  :todo "NEXT")
+    			   ;; Group 4: Tasks waiting
+    			   (:name "Waiting"
+    				  :todo "WAITING")))))))
+
+    	  ("c" "My Dashboard"
+    	   ((agenda "" ((org-agenda-span 'day) ; Today's tasks
+    			(org-super-agenda-groups
+    			 '(;; Group 1: Overdue deadlines
+    			   (:name "Overdue"
+    				  :deadline 'past)
+    			   ;; Group 2: Tasks Scheduled Today
+    			   (:name "Today"
+    				  :time-grid t
+    				  :scheduled 'today
+    				  :deadline 'today)
+    			   ;; Group 3: Tasks tagged as "NEXT"
+    			   (:name "Up Next"
+    				  :todo "NEXT")
+    			   ;; Group 4: Tasks waiting
+    			   (:name "Waiting"
+    				  :todo "WAITING"))))))))))

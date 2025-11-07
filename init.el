@@ -276,3 +276,8 @@ If the new path's directories does not exist, create them."
  )
 
 (setq gc-cons-threshold (or bedrock--initial-gc-threshold 800000))
+
+;; Run emacs server
+(require 'server)
+(unless (server-running-p)
+  (server-start))
