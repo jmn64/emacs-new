@@ -7,6 +7,26 @@
       (let ((inhibit-read-only t))
 	(erase-buffer)
 	(insert "Welcome, " (user-full-name) ".\n\n")
+
+	;; Git status check for config
+	(let* ((config-dir user-emacs-directory)
+	       (git-dir (expand-file-name ".git" config-dir)))
+	  (if (not (file-directory-p git-dir))
+	      ;; Config is not a git repo
+	      (insert (propertize " .emacs.d is not a git repository\n"
+				  'face '(:foreground "orange")))
+	    ;; Config is a git repo, check status
+	    (let ((git-status (shell-command-to-string
+			       (format "git -C %s status --porcelain"
+				       (shell-quote-argument config-dir)))))
+	      (if (string-equal git-status "")
+		  ;; Clean
+		  (insert (propertize " Config is current\n"
+				      'face '(:foreground "green")))
+		;; Dirty
+		(insert (propertize " Config has uncommitted changes\n"
+				    'face '(:foreground "red")))))))
+	
 	(insert "--- Org Agenda Files ---\n")
 	(if (and (boundp 'org-agenda-files) org-agenda-files)
 	    (dolist (file org-agenda-files)
@@ -53,7 +73,13 @@
 	  (insert-button " [Open Extras Config Folder]\n"
 			 'action (lambda (btn) (dired extras-dir))
 			 'follow-link t
-			 'help-echo (format "Open %s in Dired" extras-dir)))
+			 'help-echo (format "Open %s in Dired" extras-dir))
+
+	  ;; Link to open magit set to the config directory
+	  (insert-button " [Open Magit (Config)]\n"
+			 'action (lambda (btn) (magit-status user-emacs-directory))
+			 'follow-link t
+			 'help-echo "Open Magit status for .emacs.d"))
 	
 	(insert "\n --- Other Actions ---\n")
 	(insert-button " Find File (C-x C-f)\n"
