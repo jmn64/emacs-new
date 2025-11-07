@@ -22,9 +22,6 @@
 			       (format "git -C %s status --porcelain"
 				       (shell-quote-argument expanded-dir)))))
 
-	      ;; DEBUG
-	      (insert (format "DEBUG: git-status is: %S\n" git-status))
-
 	      (if (string-blank-p git-status)
 		  ;; Clean
 		  (insert (propertize " Config is current\n"
