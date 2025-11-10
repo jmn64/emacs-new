@@ -79,6 +79,9 @@
 ;; Org-refile: where should org-refile look?
 (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
 
+;; Allow refile to create headings
+(setq org-refile-allow-creating-parent-nodes t)
+
 ;;; Phase 3 variables
 
 ;; Org-roam variables
