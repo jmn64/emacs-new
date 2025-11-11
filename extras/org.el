@@ -158,6 +158,10 @@
            (file "inbox.org")
            "* %?\n")
 
+          ("i" "Inventory Tool" entry
+           (file "tool-inventory.org")
+	   "* %?\n:PROPERTIES:\n:ITEM_TYPE: tool\n:LOCATION:\n:CONTAINER:\n:TAGS:\n:ID: %(org-id-new)\n:END:\n")
+
           ("j" "Journal Entry" entry
            (file+datetree "journal.org")
 	   "* %(format-time-string \"%H:%M\") %? \n")
@@ -171,7 +175,7 @@
 	   "* TODO %?\n\n%(shell-command-to-string (format \"%s | tr -d '\\r'\" xclip-paste-program))")
           )
 	)
-  )
+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -179,7 +183,31 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; TODO
+
+;; Org IDs
+(require 'org-id)
+(setq org-id-locations-file (expand-file-name ".org-id-locations" user-emacs-directory))
+(org-id-update-id-locations)
+
+;; Inventory files
+(add-to-list 'org-agenda-files "~/Documents/org/tool-inventory.org")
+(setq org-id-files org-agenda-files)
+
+(setq org-columns-default-format "%20ITEM %15LOCATION %20CONTAINER %10ITEM_TYPE %20TAGS")
+
+;; Inventory Helper Functions
+(defun my-workshop-add-tool ()
+  "Use org-capture to add a new tool."
+  (interactive)
+  (org-capture nil "i"))
+
+(defun my-workshop-find-tool ()
+       "Fuzzy-find a tool in the inventory file. Assumes existence of package like `consult`"
+       (interactive)
+       ;; temp override to limit search to inventory file
+       (let ((consult-org-source (list (file-truename "~/Documents/org/tool-inventory.org"))))
+	 (call-interactively 'consult-org-heading)))
+
 
 ;; Org Habit Tracking
 (add-to-list 'org-modules 'org-habit t)

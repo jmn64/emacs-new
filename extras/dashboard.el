@@ -84,6 +84,18 @@
 			 'follow-link t
 			 'help-echo "Open Magit status for .emacs.d"))
 	
+	;; Tool Inventory Functions
+	(insert "\n--- Workshop Inventory ---\n")
+	(insert-button " [Find a Tool]\n"
+		       'action (lambda (btn) (my-workshop-find-tool))
+		       'follow-link t
+		       'help-echo "Search for a tool in the inventory")
+
+	(insert-button " [Add a New Tool (C-c c i)]\n"
+		       'action (lambda (btn) (my-workshop-add-tool))
+		       'follow-link t
+		       'help-echo "Add a new tool to the inventory")
+	
 	(insert "\n --- Other Actions ---\n")
 	(insert-button " Find File (C-x C-f)\n"
 		       'action (lambda (btn) (call-interactively 'find-file)))
