@@ -162,7 +162,11 @@
            (file+datetree "journal.org")
 	   "* %(format-time-string \"%H:%M\") %? \n")
 
-	  ("c" "Clipboard (inbox)" entry
+	  ("p" "Paste Clipboard (inbox)" entry
+	   (file "inbox.org")
+	   "* TODO %?\n\n%x")
+
+	  ("c" "WSL Clipboard (inbox)" entry
 	   (file "inbox.org")
 	   "* TODO %?\n\n%(shell-command-to-string (format \"%s | tr -d '\\r'\" xclip-paste-program))")
           )
