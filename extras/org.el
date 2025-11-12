@@ -232,6 +232,25 @@
   (org-super-agenda-mode)
   (setq org-agenda-custom-commands
 	'(
+	  ;; Review Dashboard
+	  ("r" "Review"
+	   ((alltodo "" ((org-agenda-overriding-header "")
+			 (org-super-agenda-groups
+			  '((:log t)
+			    (:name "Next Work"
+				   :and (:todo "NEXT" :file-path "work.org")
+				   :order 1)
+			    (:name "Next Home"
+				   :and (:todo "NEXT" :file-path "home.org")
+				   :order 2)
+			    (:name "Waiting"
+				   :todo "WAITING"
+				   :order 3)
+			    (:name "Inbox"
+				   :file-path "inbox.org"
+				   :order 4)
+			    ))))))
+
     	  ;; Work Dashboard
     	  ("w" "Work Dashboard"
     	   ((agenda "" ((org-agenda-span 'day)
