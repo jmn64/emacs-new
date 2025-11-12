@@ -232,21 +232,6 @@
   (org-super-agenda-mode)
   (setq org-agenda-custom-commands
 	'(
-	  ;; Review Dashboard Attempt
-	  ("r" "Review Dashboard"
-	   ((tags-todo "-DONE"
-		       ((org-agenda-overriding-header "Review Dashboard\n")
-			(org-agenda-span 'day)
-			(org-super-agenda-groups
-			 '(;; Group 1: Process Inbox
-			   (:name "1. Process Inbox"
-				  :file-path "inbox.org")
-			   ;; Group 2: Review Active Projects
-			   (:name "2. Review Active Projects"
-				  :tag "project")
-			   (:name "3. Review Someday/Maybe Items"
-				  :tag "someday")))))))
-
     	  ;; Work Dashboard
     	  ("w" "Work Dashboard"
     	   ((agenda "" ((org-agenda-span 'day)
