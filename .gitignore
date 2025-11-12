@@ -11,3 +11,4 @@ transient/
 bookmarks
 
 *.elc
+.org-id-locations
