@@ -242,6 +242,9 @@ If the new path's directories does not exist, create them."
 ;; Custom dashboard
 (load-file (expand-file-name "extras/dashboard.el" user-emacs-directory))
 
+;; TRAMP
+(load-file (expand-file-name "extras/tramp.el" user-emacs-directory))
+
 ;; Rainbow delimiters
 (load-file (expand-file-name "extras/rainbow.el" user-emacs-directory))
 
