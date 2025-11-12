@@ -118,6 +118,11 @@
   (require 'oc-csl)                     ; citation support
   (add-to-list 'org-export-backends 'md)
 
+  ;; allow org-babel execution
+  (org-babel-do-load-languages
+   'org-babel-load-languages '((shell . t)))
+  
+
   ;; Make org-open-at-point follow file links in the same window
   (setf (cdr (assoc 'file org-link-frame-setup)) 'find-file)
 

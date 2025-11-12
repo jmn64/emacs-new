@@ -8,11 +8,8 @@
   ;; use ~/.ssh/config
   (setq tramp-use-ssh-config t)
 
-  (setq tramp-ssh-controlmaster-options
-	"-o ControlMaster=auto -o ControlPath=~/.ssh/sockets/%r@%h-%p -o ControlPersist=1h")
-
   ;; Debug Verbosity -- 1, 2, or 3, 3 is full
-  (setq tramp-verbose 3)
+  (setq tramp-verbose 1)
 
   ;; cache connection information
   (setq tramp-persistency-file-name (expand-file-name "tramp-persistency" user-emacs-directory))
