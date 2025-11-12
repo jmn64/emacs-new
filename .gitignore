@@ -11,5 +11,5 @@ transient/
 bookmarks
 
 *.elc
-.org-id-locations
+/.org-id-locations
 /tramp-persistency
