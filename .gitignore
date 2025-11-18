@@ -13,3 +13,4 @@ bookmarks
 *.elc
 /.org-id-locations
 /tramp-persistency
+/.lsp*
