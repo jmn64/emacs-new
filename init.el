@@ -251,6 +251,10 @@ If the new path's directories does not exist, create them."
 ;; WSL clipboard behavior
 (load-file (expand-file-name "extras/clipboard.el" user-emacs-directory))
 
+;; Rust 'IDE' setup
+(load-file (expand-file-name "extras/rust.el" user-emacs-directory))
+
+
 ;; Org-mode configuration
 ;; WARNING: need to customize things inside the elisp file before use! See
 ;; the file extras/org-intro.txt for help.
