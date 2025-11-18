@@ -4,6 +4,7 @@ elpa/
 emacs-backup/
 history
 transient/
+tree-sitter/
 
 \#init.el#
 .#init.el
@@ -14,3 +15,5 @@ bookmarks
 /.org-id-locations
 /tramp-persistency
 /.lsp*
+
+
