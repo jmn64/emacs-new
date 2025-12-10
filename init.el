@@ -254,6 +254,9 @@ If the new path's directories does not exist, create them."
 ;; Rust 'IDE' setup
 (load-file (expand-file-name "extras/rust.el" user-emacs-directory))
 
+;; Typst syntax -- Disabled due to startup issues
+;;(load-file (expand-file-name "extras/typst.el" user-emacs-directory))
+
 
 ;; Org-mode configuration
 ;; WARNING: need to customize things inside the elisp file before use! See
