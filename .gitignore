@@ -5,6 +5,7 @@ emacs-backup/
 history
 transient/
 tree-sitter/
+.cache/
 
 \#init.el#
 .#init.el
