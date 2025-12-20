@@ -220,6 +220,13 @@ If the new path's directories does not exist, create them."
   :config
   (load-theme 'my-dark-theme t))          ; for light theme, use modus-operandi
 
+;;; Environment Variables
+(use-package exec-path-from-shell
+  :ensure t
+  :if (memq window-system '(mac ns x pgtk))
+  :config
+  (exec-path-from-shell-copy-env "GEMINI_API_KEY"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Optional extras
@@ -253,6 +260,9 @@ If the new path's directories does not exist, create them."
 
 ;; Rust 'IDE' setup
 (load-file (expand-file-name "extras/rust.el" user-emacs-directory))
+
+;;; AI tools
+(load-file (expand-file-name "extras/ai.el" user-emacs-directory))
 
 ;; Typst syntax -- Disabled due to startup issues
 ;;(load-file (expand-file-name "extras/typst.el" user-emacs-directory))
