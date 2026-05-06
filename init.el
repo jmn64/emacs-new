@@ -35,6 +35,9 @@
 ;; Set my name
 (setq user-full-name "Joshua Mead")
 
+;; Prefer newer config if older byte compiled one exists
+(setq load-prefer-newer t)
+
 ;; Auto convert line endings when pasted
 (setq-default inhibit-eol-conversion t)
 
