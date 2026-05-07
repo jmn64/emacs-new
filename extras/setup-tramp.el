@@ -17,3 +17,5 @@
   ;; Improves speed by reducing directory rechecks
   (setq tramp-completion-reread-directory-timeout nil)
 )
+
+(provide 'setup-tramp)

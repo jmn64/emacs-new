@@ -118,3 +118,5 @@
     (switch-to-buffer "*My-Dashboard*")))
 
 (global-set-key (kbd "C-c h") #'my-show-dashboard)
+
+(provide 'dashboard)

@@ -193,3 +193,5 @@
   :ensure t
   :config
   (setq wgrep-auto-save-buffer t))
+
+(provide 'base)

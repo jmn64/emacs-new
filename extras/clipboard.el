@@ -14,3 +14,5 @@
     (setq xclip-select-enable-clipboard t))
   ;; enable clipboard mode in all cases
   (xclip-mode 1))
+
+(provide 'clipboard)

@@ -153,3 +153,5 @@
   ;; writing prose.
   (add-hook 'prog-mode-hook 'tempel-setup-capf)
   (add-hook 'text-mode-hook 'tempel-setup-capf))
+
+(provide 'setup-dev)

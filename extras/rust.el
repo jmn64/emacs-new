@@ -65,3 +65,5 @@
   (setq company-idle-delay 0.0) ;; Immediate popups
   (setq company-minimum-prefix-length 1)
   (setq company-selection-wrap-around t))
+
+(provide 'rust)

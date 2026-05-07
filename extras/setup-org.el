@@ -308,3 +308,5 @@
     			   ;; Group 4: Tasks waiting
     			   (:name "Waiting"
     				  :todo "WAITING"))))))))))
+
+(provide 'setup-org)

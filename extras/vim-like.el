@@ -34,3 +34,5 @@
   ;; Configuring initial major mode for some modes
   (evil-set-initial-state 'eat-mode 'emacs)
   (evil-set-initial-state 'vterm-mode 'emacs))
+
+(provide 'vim-like)
