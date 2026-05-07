@@ -221,7 +221,7 @@ If the new path's directories does not exist, create them."
 
 (use-package emacs
   :config
-  (load-theme 'my-dark-theme t))          ; for light theme, use modus-operandi
+  (load-theme 'modus-operandi-tinted))          ; for light theme, use modus-operandi
 
 ;;; Environment Variables
 (use-package exec-path-from-shell
