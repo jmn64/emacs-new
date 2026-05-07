@@ -37,6 +37,13 @@ _q_: quit
 
   ;; Bindings
   (my-leader-def
+   "c" '(:ignore t :which-key "clock")
+   "ci" '(org-clock-in :which-key "clock in")
+   "co" '(org-clock-out :which-key "clock out")
+   "cg" '(org-clock-goto :which-key "active clock")
+   "cr" '(org-clock-report :which-key "clock report")
+   "cc" '(org-clock-cancel :which-key "cancel clock")
+
    "t" '(:ignore t :which-key "toggles")
    "tt" '(load-theme :which-key "choose theme")
    "tn" '(display-line-numbers-mode :which-key "line numbers")
@@ -57,6 +64,9 @@ _q_: quit
 
    "o" '(:ignore t :which-key "org")
    "oa" '(:org-agenda :which-key "agenda")
-   "oc" '(org-capture :which-key "capture")))
+   "oc" '(org-capture :which-key "capture")
+   "ol" '(:ignore t :which-key "links")
+   "ols" '(org-store-link :which-key "store link")
+   "oli" '(org-insert-link-global :which-key "insert link")))
 
 (provide 'keybinds)

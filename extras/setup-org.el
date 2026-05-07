@@ -109,11 +109,6 @@
   :hook ((org-mode . visual-line-mode)  ; wrap lines at word breaks
          (org-mode . flyspell-mode))    ; spell checking!
 
-  :bind (:map global-map
-	      ("C-c c" . org-capture)               ; capture
-	      ("C-c a" . org-agenda)                ; agenda
-              ("C-c l s" . org-store-link)          ; Mnemonic: link → store
-              ("C-c l i" . org-insert-link-global)) ; Mnemonic: link → insert
   :config
   (require 'oc-csl)                     ; citation support
   (add-to-list 'org-export-backends 'md)
