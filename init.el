@@ -39,6 +39,7 @@
 (require 'dashboard)
 (require 'rust)
 (require 'ai)
+(require 'keybinds)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
