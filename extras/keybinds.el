@@ -1,6 +1,18 @@
 (use-package hydra
   :ensure t)
 
+;;; Recfix Utility
+(defun my/rec-fix-auto ()
+  "Run 'recfix --auto' on the current file and revert the buffer"
+  (interactive)
+  (if (buffer-file-name)
+      (progn
+	(save-buffer)
+	(shell-command (format "recfix --auto %s" (shell-quote-argument (buffer-file-name))))
+	(revert-buffer t t t)
+	(message "recfix --auto applied"))
+    (user-error "Buffer is not visiting a file")))
+
 (use-package general
   :ensure t
   :config
@@ -73,6 +85,7 @@ _q_: quit
    "r" '(:ignore t :which-key "records")
    "rc" '(rec-cmd-compile :which-key "compile")
    "re" '(rec-edit-mode :which-key "edit")
+   "rf" '(my/rec-fix-auto :which-key "fix auto")
    "rs" '(rec-summary-mode :which-key "summary (table view)")
    "rq" '(rec-query :which-key "query/search")
    "ri" '(rec-edit-new-record :which-key "insert new item")
