@@ -37,6 +37,7 @@ _q_: quit
 
   ;; Bindings
   (my-leader-def
+   ;; Org Clock
    "c" '(:ignore t :which-key "clock")
    "ci" '(org-clock-in :which-key "clock in")
    "co" '(org-clock-out :which-key "clock out")
@@ -44,24 +45,42 @@ _q_: quit
    "cr" '(org-clock-report :which-key "clock report")
    "cc" '(org-clock-cancel :which-key "cancel clock")
 
+   ;; Theme Management
    "t" '(:ignore t :which-key "toggles")
    "tt" '(load-theme :which-key "choose theme")
+   "td" '((lambda () (interactive) (load-theme 'modus-vivendi-tinted t)) :which-key "dark theme")
+   "tl" '((lambda () (interactive) (load-theme 'modus-operandi-tinted t)) :which-key "dark theme")
    "tn" '(display-line-numbers-mode :which-key "line numbers")
 
+   ;; Files
    "f" '(:ignore t :which-key "files")
    "ff" '(find-file :which-key "find file")
    "fs" '(save-buffer :which-key "save file")
 
+   ;; Buffers
    "b" '(:ignore t :which-key "buffers")
    "bb" '(switch-to-buffer :which-key "switch buffer")
    "bk" '(kill-this-buffer :which-key "kill buffer")
 
+   ;; Window Management
    "w" '(:ignore t :which-key "window")
    "wr" '(hydra-window/body :which-key "resize/navigate")
    "wv" '(split-window-right :which-key "split vertical")
    "ws" '(split-window-below :which-key "split horizontal")
    "wd" '(delete-window :which-key "delete-window")
 
+   ;; Recutils
+   "r" '(:ignore t :which-key "records")
+   "rc" '(rec-cmd-compile :which-key "compile")
+   "re" '(rec-edit-mode :which-key "edit")
+   "rs" '(rec-summary-mode :which-key "summary (table view)")
+   "rq" '(rec-query :which-key "query/search")
+   "ri" '(rec-edit-new-record :which-key "insert new item")
+   "rn" '(rec-cmd-goto-next-rec :which-key "Next Record")
+   "rb" '(rec-cmd-goto-previous-rec :which-key "Previous Record")
+   "rt" '(rec-show-type :which-key "filter by type")
+
+   ;; Org Mode
    "o" '(:ignore t :which-key "org")
    "oa" '(:org-agenda :which-key "agenda")
    "oc" '(org-capture :which-key "capture")

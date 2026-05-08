@@ -33,6 +33,7 @@
 (require 'rainbow)
 (require 'vim-like)
 (require 'setup-org)
+(require 'setup-recutils)
 (require 'clipboard)
 (require 'setup-dev)
 (require 'setup-tramp)
