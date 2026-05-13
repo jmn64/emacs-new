@@ -85,8 +85,8 @@
 ;;; Phase 3 variables
 
 ;; Org-roam variables
-(setq org-roam-directory "~/Documents/org-roam/")
-(setq org-roam-index-file "~/Documents/org-roam/index.org")
+;;(setq org-roam-directory "~/Documents/org-roam/")
+;;(setq org-roam-index-file "~/Documents/org-roam/index.org")
 
 ;;; Optional variables
 
@@ -183,6 +183,8 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(use-package ox-clip
+  :ensure t)
 
 ;; Org IDs
 (require 'org-id)

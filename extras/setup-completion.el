@@ -1,24 +1,41 @@
-(setopt enable-recursive-minibuffers t)                ; Use the minibuffer whilst in the minibuffer
-(setopt completion-cycle-threshold 1)                  ; TAB cycles candidates
-(setopt completions-detailed t)                        ; Show annotations
-(setopt tab-always-indent 'complete)                   ; When I hit TAB, try to complete, otherwise, indent
-(setopt completion-styles '(basic initials substring)) ; Different styles to match input to candidates
+;; Vertico
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode)
+  :bind (:map vertico-map
+	      ("DEL" . vertico-directory-delete-char)
+	      ("M-DEL" . vertico-directory-delete-word))
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
+  :custom
+  (vertico-cycle t))
 
-(setopt completion-auto-help 'always)                  ; Open completion always; `lazy' another option
-(setopt completions-max-height 20)                     ; This is arbitrary
-(setopt completions-format 'one-column)
-(setopt completions-group t)
-(setopt completion-auto-select 'second-tab)            ; Much more eager
-;(setopt completion-auto-select t)                     ; See `C-h v completion-auto-select' for more possible values
+;; Orderless -- allows searching out of order (e.g. "thing log" and "log thing")
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles partial-completion)))))
 
-(keymap-set minibuffer-mode-map "TAB" 'minibuffer-complete) ; TAB acts more like how it does in the shell
+;; Marginalia -- info to the margins (tags, file dates, sizes)
+(use-package marginalia
+  :ensure t
+  :init
+  (marginalia-mode))
 
-;; For a fancier built-in completion option, try ido-mode,
-;; icomplete-vertical, or fido-mode. See also the file extras/base.el
+;; Consult -- Grep and preview functionality
+(use-package consult
+  :ensure t
+  :hook (completion-list-mode . consult-preview-at-point-mode))
 
-;(icomplete-vertical-mode)
-;(fido-vertical-mode)
-;(setopt icomplete-delay-completions-threshold 4000)
+;; Embark
+(use-package embark
+  :ensure t)
+
+(use-package embark-consult
+  :ensure t
+  :after (embark consult))
 
 (use-package which-key
   :ensure t

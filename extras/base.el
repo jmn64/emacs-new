@@ -108,12 +108,6 @@
   :bind (:map vertico-map
               ("M-DEL" . vertico-directory-delete-word)))
 
-;; Marginalia: annotations for minibuffer
-(use-package marginalia
-  :ensure t
-  :config
-  (marginalia-mode))
-
 ;; Corfu: Popup completion-at-point
 (use-package corfu
   :ensure t

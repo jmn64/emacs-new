@@ -69,10 +69,20 @@ _q_: quit
    "ff" '(find-file :which-key "find file")
    "fs" '(save-buffer :which-key "save file")
 
+   ;; Terminals
+   "k" '(:ignore t :which-key "terminal")
+   "kt" '(vterm :which-key "open vterm")
+   "kT" '(vterm-other-window :which-key "vterm other window")
+
    ;; Buffers
    "b" '(:ignore t :which-key "buffers")
    "bb" '(switch-to-buffer :which-key "switch buffer")
    "bk" '(kill-this-buffer :which-key "kill buffer")
+
+   ;; Embark
+   "e" '(:ignore t :which-key "embark")
+   "ea" '(embark-act :which-key "embark act")
+   "ed" '(embark-dwim :which-key "embark dwim")
 
    ;; Window Management
    "w" '(:ignore t :which-key "window")
@@ -93,10 +103,37 @@ _q_: quit
    "rb" '(rec-cmd-goto-previous-rec :which-key "Previous Record")
    "rt" '(rec-show-type :which-key "filter by type")
 
+   ;; Search
+   "s" '(:ignore t :which-key "search")
+   "sj" '(avy-goto-char-timer :which-key "jump to char")
+   "sl" '(avy-goto-line :which-key "jump to line")
+   "sw" '(avy-goto-word-1 :which-key "jump to word")
+   "ss" '(consult-line :which-key "search buffer")
+   "sr" '(consult-ripgrep :which-key "search directory/ripgrep")
+
    ;; Org Mode
    "o" '(:ignore t :which-key "org")
    "oa" '(:org-agenda :which-key "agenda")
    "oc" '(org-capture :which-key "capture")
+   ;; Org Export
+   "oe" '(:ignore t :which-key "export")
+   "oec" '(ox-clip-formatted-copy :which-key "copy as rich text")
+   ;; Org Roam
+   "or" '(:ignore t :which-key "roam")
+   "orf" '(org-roam-node-find :which-key "find node")
+   "ori" '(org-roam-node-insert :which-key "insert link")
+   "orb" '(org-roam-buffer-toggle :which-key "toggle side buffer")
+   "orc" '(org-roam-capture :which-key "capture")
+   "ors" '(consult-org-roam-search "which-key" "search nodes (grep)")
+   "orr" '(org-roam-refile :which-key "refile heading to node")
+   ;; Org Roam Dailies
+   "ord" '(:ignore t :which-key "dailies")
+   "ordt" '(org-roam-dailies-goto-today :which-key "today")
+   "ordy" '(org-roam-dailies-goto-yesterday :which-key "yesterday")
+   "ordm" '(org-roam-dailies-goto-tomorrow :which-key "tomorrow")
+   "ordd" '(org-roam-dailies-goto-date :which-key "date")
+   "ordc" '(org-roam-dailies-capture-today :which-key "capture today")
+   ;; Org Links
    "ol" '(:ignore t :which-key "links")
    "ols" '(org-store-link :which-key "store link")
    "oli" '(org-insert-link-global :which-key "insert link")))
