@@ -41,7 +41,7 @@
 (require 'setup-tramp)
 (require 'setup-vterm)
 (require 'dashboard)
-(require 'rust)
+(require 'setup-rust)
 (require 'ai)
 (require 'keybinds)
 

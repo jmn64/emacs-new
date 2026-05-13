@@ -111,6 +111,13 @@ _q_: quit
    "ss" '(consult-line :which-key "search buffer")
    "sr" '(consult-ripgrep :which-key "search directory/ripgrep")
 
+   ;; Programming
+   "p" '(:ignore t :which-key "programming")
+   "pa" '(eglot-code-actions :which-key "code actions")
+   "pr" '(eglot-rename :which-key "rename symbol")
+   "pf" '(eglot-format :which-key "format buffer")
+   "ps" '(consult-eglot-symbols :which-key "search symbols")
+
    ;; Org Mode
    "o" '(:ignore t :which-key "org")
    "oa" '(:org-agenda :which-key "agenda")
