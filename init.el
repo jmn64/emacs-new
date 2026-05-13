@@ -54,7 +54,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(package-selected-packages
+   '(aider avy cape company corfu-terminal eat embark-consult evil-org
+	   exec-path-from-shell general gptel hydra json-mode
+	   kind-icon lsp-ui marginalia orderless org-super-agenda
+	   rainbow-delimiters rec-mode rustic tempel vertico wgrep
+	   xclip yaml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
