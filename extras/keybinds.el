@@ -111,6 +111,12 @@ _q_: quit
    "ss" '(consult-line :which-key "search buffer")
    "sr" '(consult-ripgrep :which-key "search directory/ripgrep")
 
+   ;; Web Browser
+   "w" '(:ignore t :which-key "web browser")
+   "ww" '(eww :which-key "Open URL")
+   "wb" '(eww-back-url :which-key "back")
+   "wf" '(eww-forward-url :which-key "forward")
+
    ;; Programming
    "p" '(:ignore t :which-key "programming")
    "pa" '(eglot-code-actions :which-key "code actions")

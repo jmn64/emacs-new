@@ -7,6 +7,11 @@
 (setopt mouse-wheel-tilt-scroll t)
 (setopt mouse-wheel-flip-direction t)
 
+;; Change Scroll Speed/Distance
+(setq scroll-step 1)
+(setq scroll-conservatively 101)
+(setq scroll-margin 3)
+
 ;; Move through windows with Ctrl-<arrow keys>
 (windmove-default-keybindings 'control) 
 
