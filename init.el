@@ -42,6 +42,7 @@
 (require 'setup-vterm)
 (require 'dashboard)
 (require 'setup-rust)
+(require 'setup-lisp)
 (require 'ai)
 (require 'keybinds)
 
