@@ -5,4 +5,9 @@
   :config
   (add-hook 'cider-mode-hook #'corfu-mode))
 
+(use-package paredit
+  :hook ((clojure-mode . paredit-mode)
+	 (cider-repl-mode . paredit-mode)
+	 (emacs-lisp-mode . paredit-mode)))
+
 (provide 'setup-clojure)
