@@ -6,6 +6,7 @@ history
 transient/
 tree-sitter/
 .cache/
+url/
 
 \#init.el#
 .#init.el
