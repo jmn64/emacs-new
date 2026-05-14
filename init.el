@@ -43,6 +43,7 @@
 (require 'dashboard)
 (require 'setup-rust)
 (require 'setup-lisp)
+(require 'setup-clojure)
 (require 'ai)
 (require 'keybinds)
 
