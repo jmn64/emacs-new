@@ -17,14 +17,6 @@
   :ensure nil
   :hook (rustic-mode . eglot-ensure))
 
-(use-package corfu
-  :ensure t
-  :custom
-  (corfu-auto t)
-  (corfu-quit-no-match 'separator)
-  :init
-  (global-corfu-mode))
-
 (use-package consult-eglot
   :ensure t
   :after eglot)
