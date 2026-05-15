@@ -115,6 +115,7 @@
   (global-corfu-mode)
   :bind
   (:map corfu-map
+	("RET" . nil)
         ("SPC" . corfu-insert-separator)
         ("C-n" . corfu-next)
         ("C-p" . corfu-previous)))
@@ -127,6 +128,8 @@
   :custom
   (corfu-popupinfo-delay '(0.25 . 0.1))
   (corfu-popupinfo-hide nil)
+  (corfu-preview-current nil)
+  (corfu-preselect 'prompt)
   :config
   (corfu-popupinfo-mode))
 
