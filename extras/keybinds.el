@@ -128,9 +128,16 @@ _q_: quit
    "o" '(:ignore t :which-key "org")
    "oa" '(:org-agenda :which-key "agenda")
    "oc" '(org-capture :which-key "capture")
+   "ot" '(org-todo :which-key "change todo")
+   "od" '(:ignore t :which-key "org time stamps")
+   "odd" '(org-timestamp :which-key "insert timestamp")
+   "odi" '(org-timestamp-inactive :which-key "insert inactive timestamp")
    ;; Org Export
    "oe" '(:ignore t :which-key "export")
    "oec" '(ox-clip-formatted-copy :which-key "copy as rich text")
+   ;; Other Management
+   "om" '(:ignore t :which-key "misc")
+   "oma" '(org-archive-subtree :which-key "archive subtree")
    ;; Org Roam
    "or" '(:ignore t :which-key "roam")
    "orf" '(org-roam-node-find :which-key "find node")

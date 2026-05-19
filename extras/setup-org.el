@@ -186,6 +186,16 @@
 (use-package ox-clip
   :ensure t)
 
+;; Org Modern
+(use-package org-modern
+  :ensure t
+  :after org
+  :hook ((org-mode . org-modern-mode)
+	 (org-agenda-finalize . org-modern-agenda))
+  :config
+  ;; Styling customization
+  )
+
 ;; Org IDs
 (require 'org-id)
 (setq org-id-locations-file (expand-file-name ".org-id-locations" user-emacs-directory))
