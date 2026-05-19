@@ -5,6 +5,7 @@
   :config
   (setq lsp-enable-indentation t)
   (setq lsp-enable-on-type-formatting t)
+  (setq lsp-completion-enable nil)
   (add-hook 'before-save-hook #'lsp-format-buffer nil t))
 
 (use-package cider
